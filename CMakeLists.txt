@@ -31,16 +31,16 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
 endif()
 
 FetchContent_Declare(
-    catch2
-    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG v2.x
+        catch2
+        GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+        GIT_TAG v2.x
 )
 
 # Adds Catch2 testing library
 FetchContent_GetProperties(catch2)
 if(NOT catch2_POPULATED)
     FetchContent_Populate(catch2)
-    add_library(catch2 INTERFACE)
+    add_library(catch2 INTERFACE src/gas_particle.cpp)
     target_include_directories(catch2 INTERFACE ${catch2_SOURCE_DIR}/single_include)
 endif()
 
@@ -50,9 +50,10 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
 list(APPEND SOURCE_FILES    src/gas_container.cc
-                            src/gas_simulation_app.cc)
+        src/gas_simulation_app.cc
+        src/gas_particle.cpp)
 
-list(APPEND TEST_FILES tests/rename_this_test_file.cc)
+list(APPEND TEST_FILES tests/test_gas_particle.cc)
 
 ci_make_app(
         APP_NAME        gas-simulation
