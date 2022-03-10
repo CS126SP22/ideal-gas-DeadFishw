@@ -47,7 +47,6 @@ class GasContainer {
    */
   void AddParticle(GasParticle particle);
 
-
 private:
     const float kLength = 600.0;
     const float kWidth = 400.0;
