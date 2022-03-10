@@ -136,9 +136,9 @@ TEST_CASE("Test CollideWithWall") {
         REQUIRE(container.GetParticles().at(0).GetVelocity().y + 3 < kThreshold);
     }
     SECTION("Test that particle velocity does not change if not hitting walls") {
-        idealgas::GasParticle particle4 = idealgas::GasParticle(vec2(200, 200));
-        particle4.SetVelocity(vec2(3, 3));
-        container.AddParticle(particle4);
+        idealgas::GasParticle particle5 = idealgas::GasParticle(vec2(200, 200));
+        particle5.SetVelocity(vec2(3, 3));
+        container.AddParticle(particle5);
         container.AdvanceOneFrame();
         container.AdvanceOneFrame();
         REQUIRE(container.GetParticles().at(0).GetVelocity().x - 3< kThreshold);
