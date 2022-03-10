@@ -13,8 +13,12 @@ namespace idealgas {
  */
 class GasContainer {
  public:
-
+  /**
+   * Build a container with a certain
+   */
   GasContainer();
+
+  std::vector<GasParticle> GetParticles();
 
   /**
    * Displays the container walls and the current positions of the particles.
@@ -26,19 +30,25 @@ class GasContainer {
    * described in the assignment documentation).
    */
   void AdvanceOneFrame();
+
+  /**
+   * Toggle if the container is in accelarate mode
+   */
   void Accelerate();
+
+  /**
+   * Remove all particles in the container.
+   */
   void RemoveParticles();
 
+  /**
+   * Add a particle into the container
+   * @param particle the particle to be added
+   */
   void AddParticle(GasParticle particle);
 
-  std::vector<GasParticle> GetParticles();
 
 private:
-  /**
-   * This variable is just for the purposes of demonstrating how to make a shape move
-   * across a screen. Please remove it once you start working on your code.
-   */
-    int current_frame_ = 0;
     const float kLength = 600.0;
     const float kWidth = 400.0;
     const int kNumberOfParticle = 20;
