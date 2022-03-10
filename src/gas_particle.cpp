@@ -20,11 +20,9 @@ namespace idealgas {
     }
 
     void GasParticle::CollideWithWall(float length, float width) {
-        if (position_.x - size_ > 0 && position_.x + size_ < length) {
-            if ((velocity_.y < 0 && position_.y - size_ < 0) ||
-                (velocity_.y > 0 && position_.y + size_ > width)) {
-                velocity_ = vec2(velocity_.x, -velocity_.y);
-            }
+        if ((velocity_.y < 0 && position_.y - size_ < 0) ||
+            (velocity_.y > 0 && position_.y + size_ > width)) {
+            velocity_ = vec2(velocity_.x, -velocity_.y);
         }
         if ((velocity_.x < 0 && position_.x - size_ < 0) ||
             (velocity_.x > 0 && position_.x + size_ > length)) {
@@ -53,7 +51,7 @@ namespace idealgas {
         velocity_ = velocity;
     }
 
-    vec2 GasParticle::GetVelocity() {
+    vec2 GasParticle::GetVelocity() const {
         return velocity_;
     }
 
