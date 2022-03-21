@@ -4,6 +4,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "gas_container.h"
+#include "histogram.h"
 
 namespace idealgas {
 
@@ -17,13 +18,20 @@ class IdealGasApp : public ci::app::App {
   void draw() override;
   void update() override;
 
-  const int kWindowSize = 875;
+  const int kWindowLength = 1440;
+  const int kWindowWidth = 960;
+
   const int kMargin = 100;
 
  private:
   GasContainer container_;
 
     void keyDown(ci::app::KeyEvent event);
+    const float kHistogramSize = 250;
+    const float kHistogramMargin = 50;
+    Histogram red_histogram_;
+    Histogram green_histogram_;
+    Histogram blue_histogram_;
 };
 
 }  // namespace idealgas
