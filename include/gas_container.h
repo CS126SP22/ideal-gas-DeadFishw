@@ -47,12 +47,16 @@ class GasContainer {
    */
   void AddParticle(GasParticle particle);
 
+  void AddParticle(char *particle);
+
 private:
-    const float kLength = 600.0;
-    const float kWidth = 400.0;
-    const int kNumberOfParticle = 20;
+    const float kLength = 1000.0;
+    const float kWidth = 800.0;
+    const int kNumberOfParticle = 1;
     bool needAccelerate;
     std::vector<GasParticle> particles_;
+
+
 };
 
 }  // namespace idealgas
