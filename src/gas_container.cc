@@ -15,7 +15,7 @@ GasContainer::GasContainer() {
 
 void GasContainer::Display() const {
   // This function has a lot of magic numbers; be sure to design your code in a way that avoids this.
-  ci::gl::color(ci::Color("orange"));
+  ci::gl::color(ci::Color("white"));
   ci::gl::drawStrokedRect(ci::Rectf(vec2(0, 0), vec2(kLength, kWidth)));
 
   for (const GasParticle particle: particles_) {

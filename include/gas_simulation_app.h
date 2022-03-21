@@ -18,17 +18,18 @@ class IdealGasApp : public ci::app::App {
   void draw() override;
   void update() override;
 
-  const int kWindowLength = 1440;
-  const int kWindowWidth = 960;
-
-  const int kMargin = 100;
-
  private:
   GasContainer container_;
 
     void keyDown(ci::app::KeyEvent event);
     const float kHistogramSize = 250;
     const float kHistogramMargin = 50;
+    const int kWindowLength = 1440;
+    const int kWindowWidth = 960;
+
+    const int kMargin = 100;
+    const int kContainerLength = 1000;
+    const int kContainerWidth = 800;
     Histogram red_histogram_;
     Histogram green_histogram_;
     Histogram blue_histogram_;

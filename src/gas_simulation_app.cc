@@ -5,16 +5,16 @@ namespace idealgas {
     IdealGasApp::IdealGasApp() {
         ci::app::setWindowSize(kWindowLength, kWindowWidth);
         red_histogram_ = Histogram(cinder::Color("red"),
-                                   vec2(1000, 800) +
-                                   vec2(kMargin, -800),
+                                   vec2(kContainerLength, kContainerWidth) +
+                                   vec2(kMargin, -kContainerWidth),
                                    kHistogramSize);
         green_histogram_ = Histogram(cinder::Color("green"),
-                                   vec2(1000, 800) +
-                                    vec2(kMargin, -800 + kHistogramSize + kHistogramMargin),
+                                   vec2(kContainerLength, kContainerWidth) +
+                                    vec2(kMargin, -kContainerWidth + kHistogramSize + kHistogramMargin),
                                    kHistogramSize);
         blue_histogram_ = Histogram(cinder::Color("blue"),
-                                   vec2(1000, 800) +
-                                   vec2(kMargin, -800 + 2 * ( kHistogramSize + kHistogramMargin)),
+                                   vec2(kContainerLength, kContainerWidth) +
+                                   vec2(kMargin, -kContainerWidth + 2 * ( kHistogramSize + kHistogramMargin)),
                                    kHistogramSize);
     }
 
