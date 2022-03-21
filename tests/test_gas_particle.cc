@@ -34,12 +34,44 @@ TEST_CASE("Test CollideWithParticle") {
         REQUIRE(abs(container.GetParticles().at(1).GetVelocity().x) < kThreshold);
         REQUIRE(abs(container.GetParticles().at(1).GetVelocity().y - 0.1) < kThreshold);
     }
+    SECTION("Test that two particles with different mass collide good") {
+        GasContainer container;
+        container.RemoveParticles();
+        idealgas::GasParticle particle1 = idealgas::GasParticle(vec2(11, 45.0), "red");
+        particle1.SetVelocity(vec2(9, 5));
+        idealgas::GasParticle particle2 = idealgas::GasParticle(vec2(60, 43), "blue");
+        particle2.SetVelocity(vec2(-5, 7));
+        container.AddParticle(particle1);
+        container.AddParticle(particle2);
+        container.AdvanceOneFrame();
+        container.AdvanceOneFrame();
+        REQUIRE(abs(container.GetParticles().at(0).GetVelocity().x + 7.8) < kThreshold);
+        REQUIRE(abs(container.GetParticles().at(0).GetVelocity().y - 5)  < kThreshold);
+        REQUIRE(abs(container.GetParticles().at(1).GetVelocity().x - 6.2) < kThreshold);
+        REQUIRE(abs(container.GetParticles().at(1).GetVelocity().y - 7) < kThreshold);
+    }
     SECTION("Test that two particles not colliding stay the same") {
         GasContainer container;
         container.RemoveParticles();
         idealgas::GasParticle particle1 = idealgas::GasParticle(vec2(19.9, 50.0));
         particle1.SetVelocity(vec2(0.1, 0));
         idealgas::GasParticle particle2 = idealgas::GasParticle(vec2(21.5, 21.4));
+        particle2.SetVelocity(vec2(-0.1, 0));
+        container.AddParticle(particle1);
+        container.AddParticle(particle2);
+        container.AdvanceOneFrame();
+        container.AdvanceOneFrame();
+        REQUIRE(abs(container.GetParticles().at(0).GetVelocity().x - 0.1) < kThreshold);
+        REQUIRE(abs(container.GetParticles().at(0).GetVelocity().y)  < kThreshold);
+        REQUIRE(abs(container.GetParticles().at(1).GetVelocity().x + 0.1) < kThreshold);
+        REQUIRE(abs(container.GetParticles().at(1).GetVelocity().y) < kThreshold);
+    }
+    SECTION("Test that two particles not colliding with different radii stay the same") {
+        GasContainer container;
+        container.RemoveParticles();
+        idealgas::GasParticle particle1 = idealgas::GasParticle(vec2(19.9, 50.0), "red");
+        particle1.SetVelocity(vec2(0.1, 0));
+        idealgas::GasParticle particle2 = idealgas::GasParticle(vec2(21.5, 150.4), "blue");
         particle2.SetVelocity(vec2(-0.1, 0));
         container.AddParticle(particle1);
         container.AddParticle(particle2);
