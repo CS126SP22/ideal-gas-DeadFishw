@@ -40,7 +40,7 @@ FetchContent_Declare(
 FetchContent_GetProperties(catch2)
 if(NOT catch2_POPULATED)
     FetchContent_Populate(catch2)
-    add_library(catch2 INTERFACE src/gas_particle.cpp)
+    add_library(catch2 INTERFACE src/gas_particle.cpp src/histogram.cpp include/histogram.h)
     target_include_directories(catch2 INTERFACE ${catch2_SOURCE_DIR}/single_include)
 endif()
 
@@ -51,7 +51,8 @@ include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
 list(APPEND SOURCE_FILES    src/gas_container.cc
         src/gas_simulation_app.cc
-        src/gas_particle.cpp)
+        src/gas_particle.cpp
+        src/histogram.cpp)
 
 list(APPEND TEST_FILES tests/test_gas_particle.cc)
 
